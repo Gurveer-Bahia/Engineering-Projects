@@ -16,7 +16,7 @@ class Car:
         In reality these would be nonlinear and CFD-derived.
         """
         C_d = 0.70 + 0.02 * wing_angle
-        C_L = 0.50 + 0.05 * wing_angle
+        C_L = 0.50 + 0.07 * wing_angle
         return C_d, C_L
 
     def simulate(self, wing_angles):

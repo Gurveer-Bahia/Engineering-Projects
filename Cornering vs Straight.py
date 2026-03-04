@@ -2,14 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from Python_Aerodynamics_Sim import Car
 
-# Wing angles for simulation
+# Parameters
 wing_angles = np.linspace(0, 15, 30)
-
-# Realistic F1 corner radius in meters
-radius = 1000000000
-
-# Create F1 Car with realistic parameters: mass 700kg, frontal area 1.5m², engine power 750 kW
-car = Car("F1 Concept", 700, 1.7, 750_000)
+radius = 80
+car = Car("F1 Concept", 700, 1.7, 350_000)
 
 top_speeds = []
 corner_speeds = []
@@ -24,7 +20,7 @@ for angle in wing_angles:
     v_corner = car.cornering_speed(radius, angle)
     corner_speeds.append(v_corner)
 
-# Convert to km/h for plotting
+    
 top_speeds_kmh = np.array(top_speeds) * 3.6
 corner_speeds_kmh = np.array(corner_speeds) * 3.6
 
