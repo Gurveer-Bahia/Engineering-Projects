@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains a Python simulation exploring how **rear wing angle** affects **top speed**, **cornering speed**, and **lap time**. It demonstrates the trade-off between aerodynamic **downforce** and **drag**, highlighting both vehicle physics and programming skills. The code is modular, with separate files for the core physics (`Python_Aerodynamics_Sim.py`), lap time simulation (`LapTimeSimulation.py`), and cornering analysis (`cornering.py`), all visualized using Matplotlib.
+This repository contains a Python simulation exploring how **rear wing angle** affects **top speed**, **cornering speed**, and **lap time**. It demonstrates the trade-off between aerodynamic **downforce** and **drag**, highlighting both vehicle physics and programming skills. The code is modular, with separate files for the core physics (`Python_Aerodynamics_Sim.py`), lap time simulation (`LapTimeSimulation.py`), cornering analysis (`cornering.py`) and straight vs corner comparison(`Cornering vs Straight.py`) all visualized using Matplotlib.
 
 ---
 
@@ -13,8 +13,7 @@ The repository is organized as follows:
 - `Python_Aerodynamics_Sim.py` – Contains the `Car` class, modeling drag, downforce, and cornering physics.
 - `LapTimeSimulation.py` – Computes lap times for a track with straight and curved segments; includes `LapTimeSimulator.run_analysis()` to sweep wing angles.
 - `cornering.py` – Calculates maximum cornering speed at a fixed turn radius for different vehicles.
-- `figures/` – Optional folder to store generated graphs.
-
+- `Cornering vs Straight.py` - Visualizes how rear wing angle affects a car’s top speed and cornering speed, highlighting the trade-off between aerodynamic drag and downforce.
 ---
 
 ## Core Physics
