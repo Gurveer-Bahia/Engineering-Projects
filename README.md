@@ -1,4 +1,4 @@
-# F1 Car Performance Simulation
+<img width="998" height="663" alt="image" src="https://github.com/user-attachments/assets/b6a1682f-4124-4a27-a071-e73ea0ebeb42" /># F1 Car Performance Simulation
 
 ## Overview
 
@@ -47,6 +47,7 @@ The cubic equation for velocity is solved numerically using the **Newton–Raphs
 `LapTimeSimulation.py` integrates the physics for both straight and corner segments. Straight sections call `LapTimeSimulator.straight_speed()`, while corners call `Car.cornering_speed()`. Lap time for each segment is distance divided by velocity, and the total lap time is the sum of all segments.  
 
 The `run_analysis()` method sweeps over a range of wing angles, plots **lap time versus wing angle**, identifies the optimal configuration, and prints key lap times at selected angles (0°, 5°, 10°, 15°) for verification.
+The graph is shown below:<img width="998" height="663" alt="image" src="https://github.com/user-attachments/assets/e8699b1c-665d-423f-a939-44af8dbdc875" />
 
 ---
 
@@ -60,13 +61,17 @@ The `cornering.py` module isolates **cornering performance**. It computes maximu
 The repository also includes a script that computes the effect of rear wing angle on a vehicle’s **top speed** and **cornering speed**. This script imports the `Car` class from `Python_Aerodynamics_Sim.py` and uses it to calculate:
 
 - **Straight-line top speed**, derived from engine power and drag.  
-- **Cornering speed**, using the iterative solver in `Car.cornering_speed()` to account for downforce and tire grip.
+- **Cornering speed**, using the iterative solver in `Car.cornering_speed()` to account for downforce and tire grip. 
 
 It generates three visualizations:
 
-1. **Top Speed vs Wing Angle** – shows how drag reduces speed as wing angle increases.  
-2. **Cornering Speed vs Wing Angle** – demonstrates how downforce improves cornering velocity with higher wing angles.  
+1. **Top Speed vs Wing Angle** – shows how drag reduces speed as wing angle increases.
+<img width="499" height="331.5" alt="image" src="https://github.com/user-attachments/assets/07ff18ec-43f3-4fa1-beee-002aba7bbb94" />
+  
+2. **Cornering Speed vs Wing Angle** – demonstrates how downforce improves cornering velocity with higher wing angles.
+    
 3. **Dual-axis Comparison** – overlays top speed and cornering speed to illustrate the trade-off between straight-line and cornering performance.
+<img width="499" height="331.5" alt="image" src="https://github.com/user-attachments/assets/c9dcde80-03c7-47dc-bc44-89f95e363320" />
 
 This analysis complements the lap-time simulator by highlighting the **aerodynamic trade-offs** in isolation, allowing a clear understanding of how wing angle impacts vehicle performance.
 
