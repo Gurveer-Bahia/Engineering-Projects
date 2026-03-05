@@ -127,9 +127,9 @@ if __name__ == "__main__":
     wing_angles = np.linspace(0, 15, 30)
 
     # Typical Formula Student scale values
-    car1 = Car("Formula Student", 300, 1.2, 80000)
+    car1 = Car("Formula Student", 300, 1.2, 55000)
     # Approximate modern F1 values (order of magnitude)
-    car2 = Car("F1 Concept", 795, 1.5, 750000)
+    car2 = Car("F1 Concept", 795, 1.5, 300000)
 
     sim = Simulation(wing_angles)
     sim.add_car(car1)
