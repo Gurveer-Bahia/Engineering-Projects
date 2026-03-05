@@ -11,15 +11,14 @@ class LapTimeSimulator:
 
         # Each segment: {"length": m, "radius": corner radius or None for straight}
         self.track = [
-    {"length": 300, "radius": None},   # Short straight
-    {"length": 150, "radius": 35},     # Tight corner
-    {"length": 200, "radius": None},   # Straight
-    {"length": 180, "radius": 30},     # Tight corner
-    {"length": 200, "radius": None},   # Straight
-    {"length": 160, "radius": 40},     # Medium corner
-    {"length": 150, "radius": 25},     # Very tight corner
-    {"length": 250, "radius": None},   # Final straight
-]
+            {"length": 600, "radius": None},   # Main straight
+            {"length": 200, "radius": 50},     # Medium corner
+            {"length": 500, "radius": None},   # Back straight
+            {"length": 220, "radius": 45},     # Corner
+            {"length": 400, "radius": None},   # Straight
+            {"length": 180, "radius": 55},     # Medium corner
+            {"length": 350, "radius": None},   # Final straight
+        ]
 
     def straight_speed(self, wing_angle):
         C_d, _ = self.car.aerodynamic_coefficients(wing_angle)

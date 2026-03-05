@@ -15,8 +15,9 @@ class Car:
         Simple linear model for drag and lift coefficients.
         In reality these would be nonlinear and CFD-derived.
         """
-        C_d = 0.70 + 0.02 * wing_angle
-        C_L = 0.50 + 0.07 * wing_angle
+        # Adjusted aerodynamics for realistic F1 lap-time optimum (~7-8°)
+        C_d = 1 + 0.005 * wing_angle**2   # moderate drag increase
+        C_L = 0.15 + 0.24 * wing_angle  # base downforce at 0° plus wing contribution
         return C_d, C_L
 
     def simulate(self, wing_angles):
@@ -125,8 +126,10 @@ class Simulation:
 if __name__ == "__main__":
     wing_angles = np.linspace(0, 15, 30)
 
-    car1 = Car("Formula Student", 300, 1.2, 5000)
-    car2 = Car("F1 Concept", 700, 1.0, 7000)
+    # Typical Formula Student scale values
+    car1 = Car("Formula Student", 300, 1.2, 80000)
+    # Approximate modern F1 values (order of magnitude)
+    car2 = Car("F1 Concept", 795, 1.5, 750000)
 
     sim = Simulation(wing_angles)
     sim.add_car(car1)
