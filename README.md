@@ -1,0 +1,121 @@
+# F1 Car Performance Simulation
+
+## Overview
+
+This repository contains a Python simulation exploring how **rear wing angle** affects **top speed**, **cornering speed**, and **lap time**. It demonstrates the trade-off between aerodynamic **downforce** and **drag**, highlighting both vehicle physics and programming skills. The code is modular, with separate files for the core physics (`Python_Aerodynamics_Sim.py`), lap time simulation (`LapTimeSimulation.py`), cornering analysis (`cornering.py`) and straight vs corner comparison(`Cornering vs Straight.py`) all visualized using Matplotlib.
+
+---
+
+## Repository Structure
+
+The repository is organized as follows:
+
+- `Python_Aerodynamics_Sim.py` – Contains the `Car` class, modeling drag, downforce, and cornering physics.
+- `LapTimeSimulation.py` – Computes lap times for a track with straight and curved segments; includes `LapTimeSimulator.run_analysis()` to sweep wing angles.
+- `cornering.py` – Calculates maximum cornering speed at a fixed turn radius for different vehicles.
+- `Cornering vs Straight.py` - Visualizes how rear wing angle affects a car’s top speed and cornering speed, highlighting the trade-off between aerodynamic drag and downforce.
+---
+
+## Core Physics
+
+The `Car` class models a vehicle’s **mass**, **frontal area**, **engine power**, and **aerodynamic properties**. Drag (`C_d`) and downforce (`C_L`) vary linearly with wing angle, capturing the trade-off between straight-line speed and cornering grip.  
+
+Cornering speed is calculated using **lateral force balance**:
+
+$$
+v = \sqrt{\frac{\mu (m g + F_\text{down}) r}{m}}
+$$
+
+where $\mu$ is the tire friction coefficient, $F_\text{down}$ is aerodynamic downforce (proportional to $v^2$), and $r$ is corner radius. To account for the fact that downforce depends on velocity, an **iterative solver** updates `v` until convergence, ensuring a consistent and physically realistic cornering speed.  
+
+---
+
+## Straight-Line Speed
+
+Straight-line speed is determined from a **power balance**:
+
+$$
+P_\text{engine} = (\text{Drag} + \text{Rolling Resistance}) \cdot v
+$$
+
+The cubic equation for velocity is solved numerically using the **Newton–Raphson method**, which iteratively refines the estimate until engine power is balanced by resistive forces. This provides a reliable steady-state speed for any wing angle.  
+The file that calculates this creates the graph of straight line speed and down force which are shown below:
+<img width="998" height="663" alt="image" src="https://github.com/user-attachments/assets/0dbf65a5-d2b1-4d4c-8cb2-93b9dd92fede" />
+<img width="998" height="662" alt="image" src="https://github.com/user-attachments/assets/7576329b-d8d7-4532-8d0d-ac4aee2a1d4b" />
+
+---
+
+## Lap Time Simulation
+
+`LapTimeSimulation.py` integrates the physics for both straight and corner segments. Straight sections call `LapTimeSimulator.straight_speed()`, while corners call `Car.cornering_speed()`. Lap time for each segment is distance divided by velocity, and the total lap time is the sum of all segments.  
+
+The `run_analysis()` method sweeps over a range of wing angles, plots **lap time versus wing angle**, identifies the optimal configuration, and prints key lap times at selected angles (0°, 5°, 10°, 15°) for verification.
+The graph is shown below:<img width="998" height="663" alt="image" src="https://github.com/user-attachments/assets/e8699b1c-665d-423f-a939-44af8dbdc875" />
+
+---
+
+## Cornering Analysis
+
+The `cornering.py` module isolates **cornering performance**. It computes maximum cornering speed for different vehicles at a fixed turn radius using the same iterative solver as `Car.cornering_speed()`. This allows visualization of aerodynamic trade-offs independently of straight-line performance.
+The graph which compares 2 vehicles is shown below:
+<img width="998" height="663" alt="image" src="https://github.com/user-attachments/assets/8eb892fe-11c1-448d-b415-689a42416035" />
+
+
+---
+## Straight vs Cornering Speed Analysis
+
+The repository also includes a script that computes the effect of rear wing angle on a vehicle’s **top speed** and **cornering speed**. This script imports the `Car` class from `Python_Aerodynamics_Sim.py` and uses it to calculate:
+
+- **Straight-line top speed**, derived from engine power and drag.  
+- **Cornering speed**, using the iterative solver in `Car.cornering_speed()` to account for downforce and tire grip. 
+
+It generates three visualizations:
+
+1. **Top Speed vs Wing Angle** – shows how drag reduces speed as wing angle increases.
+<img width="499" height="331.5" alt="image" src="https://github.com/user-attachments/assets/07ff18ec-43f3-4fa1-beee-002aba7bbb94" />
+  
+2. **Cornering Speed vs Wing Angle** – demonstrates how downforce improves cornering velocity with higher wing angles.
+<img width="499" height="331.5" alt="image" src="https://github.com/user-attachments/assets/978c82c2-f638-48e6-95ec-e3b048338708" />
+   
+3. **Dual-axis Comparison** – overlays top speed and cornering speed to illustrate the trade-off between straight-line and cornering performance.
+<img width="499" height="331.5" alt="image" src="https://github.com/user-attachments/assets/c9dcde80-03c7-47dc-bc44-89f95e363320" />
+
+This analysis complements the lap-time simulator by highlighting the **aerodynamic trade-offs** in isolation, allowing a clear understanding of how wing angle impacts vehicle performance.
+
+## Visualisation and Insights
+
+Graphs generated by the simulations illustrate how **top speed decreases** with increasing wing angle, while **cornering speed increases**, highlighting the drag vs downforce trade-off. Optimal lap times occur where these competing effects balance. Comparisons between vehicles, such as a Formula Student car and an F1 concept car, demonstrate the influence of **mass**, **frontal area**, and **engine power** on overall performance.  
+
+Key observations:
+
+- Low wing angles favor straights but reduce cornering grip.  
+- High wing angles improve cornering but increase drag.  
+- Optimal lap times occur at a wing angle that balances these effects.  
+
+---
+## How to run
+
+This project requires the following Python libraries:  
+
+- `numpy` – For array operations and numerical calculations  
+- `matplotlib` – For plotting graphs of speed, cornering, and lap time  
+
+You can install them via pip if necessary:
+
+```bash
+pip install numpy matplotlib
+```
+All scripts should be kept in the same folder to ensure proper imports. Keeping all files together allows the scripts to import the Car class from Python_Aerodynamics_Sim.py without any path issues.
+
+---
+
+## Future Improvements
+
+Future enhancements could include:
+
+- Modeling acceleration and braking phases for more realistic lap times.  
+- Incorporating gear ratios and engine torque curves.  
+- More realistic tire behavior, including load sensitivity.  
+- Multi-car simulations for comparative lap times.
+
+---
