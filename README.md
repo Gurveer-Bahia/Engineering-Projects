@@ -1,4 +1,4 @@
-<img width="998" height="663" alt="image" src="https://github.com/user-attachments/assets/b6a1682f-4124-4a27-a071-e73ea0ebeb42" /># F1 Car Performance Simulation
+# F1 Car Performance Simulation
 
 ## Overview
 
@@ -39,6 +39,9 @@ P_\text{engine} = (\text{Drag} + \text{Rolling Resistance}) \cdot v
 $$
 
 The cubic equation for velocity is solved numerically using the **Newton–Raphson method**, which iteratively refines the estimate until engine power is balanced by resistive forces. This provides a reliable steady-state speed for any wing angle.  
+The file that calculates this creates the graph of straight line speed and down force which are shown below:
+<img width="998" height="663" alt="image" src="https://github.com/user-attachments/assets/0dbf65a5-d2b1-4d4c-8cb2-93b9dd92fede" />
+<img width="998" height="662" alt="image" src="https://github.com/user-attachments/assets/7576329b-d8d7-4532-8d0d-ac4aee2a1d4b" />
 
 ---
 
@@ -54,6 +57,9 @@ The graph is shown below:<img width="998" height="663" alt="image" src="https://
 ## Cornering Analysis
 
 The `cornering.py` module isolates **cornering performance**. It computes maximum cornering speed for different vehicles at a fixed turn radius using the same iterative solver as `Car.cornering_speed()`. This allows visualization of aerodynamic trade-offs independently of straight-line performance.
+The graph which compares 2 vehicles is shown below:
+<img width="998" height="663" alt="image" src="https://github.com/user-attachments/assets/8eb892fe-11c1-448d-b415-689a42416035" />
+
 
 ---
 ## Straight vs Cornering Speed Analysis
@@ -69,7 +75,8 @@ It generates three visualizations:
 <img width="499" height="331.5" alt="image" src="https://github.com/user-attachments/assets/07ff18ec-43f3-4fa1-beee-002aba7bbb94" />
   
 2. **Cornering Speed vs Wing Angle** – demonstrates how downforce improves cornering velocity with higher wing angles.
-    
+<img width="499" height="331.5" alt="image" src="https://github.com/user-attachments/assets/978c82c2-f638-48e6-95ec-e3b048338708" />
+   
 3. **Dual-axis Comparison** – overlays top speed and cornering speed to illustrate the trade-off between straight-line and cornering performance.
 <img width="499" height="331.5" alt="image" src="https://github.com/user-attachments/assets/c9dcde80-03c7-47dc-bc44-89f95e363320" />
 
