@@ -96,10 +96,7 @@ class LapTimeSimulator:
             print(f"  {angle}° -> {time_sec:.2f} seconds")
 
 
-# -------------------------
 # Run Example
-# -------------------------
-
 if __name__ == "__main__":
     wing_angles = np.linspace(0, 15, 30)
 
